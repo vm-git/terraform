@@ -56,22 +56,22 @@ resource "aws_instance" "web1_nginx_instance" {
     aws_security_group.vmvpc_sg
   ]
 }
-resource "aws_instance" "web1_apache_instance" {
-  ami                         = var.ami_id
-  instance_type               = "t2.micro"
-  associate_public_ip_address = true
-  key_name                    = aws_key_pair.mykey.id
-  vpc_security_group_ids      = [aws_security_group.vmvpc_sg.id]
-  subnet_id                   = data.aws_subnets.public_subnets.ids[0]
-  tags = {
-    "Name" = "web1_apache_instance"
-  }
-  depends_on = [
-    data.aws_subnets.public_subnets,
-    aws_subnet.subnets,
-    aws_security_group.vmvpc_sg
-  ]
-}
+# resource "aws_instance" "web1_apache_instance" {
+#   ami                         = var.ami_id
+#   instance_type               = "t2.micro"
+#   associate_public_ip_address = true
+#   key_name                    = aws_key_pair.mykey.id
+#   vpc_security_group_ids      = [aws_security_group.vmvpc_sg.id]
+#   subnet_id                   = data.aws_subnets.public_subnets.ids[0]
+#   tags = {
+#     "Name" = "web1_apache_instance"
+#   }
+#   depends_on = [
+#     data.aws_subnets.public_subnets,
+#     aws_subnet.subnets,
+#     aws_security_group.vmvpc_sg
+#   ]
+# }
 
 # resource "null_resource" "null_rsc_nginx" {
 #   triggers = {
